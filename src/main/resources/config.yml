@@ -1,0 +1,6 @@
+Nickname: false
+Fallback-server: lobby
+Ban-check: true
+List:
+  - restarting
+  - kicked

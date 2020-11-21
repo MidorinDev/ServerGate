@@ -1,0 +1,12 @@
+name: ServerGate
+version: ${project.version}
+main: plugin.midorin.info.sg.ServerGate
+
+commands:
+  servergate:
+    description: ServerGateのメインコマンドです。
+    aliases:
+      - sg
+      - gate
+  nick:
+    description: 自分のニックネームを変更するコマンドです。
