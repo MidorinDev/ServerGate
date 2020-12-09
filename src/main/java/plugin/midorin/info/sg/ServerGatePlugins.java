@@ -1,7 +1,10 @@
 package plugin.midorin.info.sg;
 
+import plugin.midorin.info.sg.commands.Main;
+import plugin.midorin.info.sg.commands.ServerGate;
 import plugin.midorin.info.sg.listeners.ConnectionListener;
 import plugin.midorin.info.sg.locale.TranslationManager;
+import plugin.midorin.info.sg.util.ConnectState;
 import plugin.midorin.info.sg.util.CustomConfig;
 
 import java.nio.file.Path;
@@ -12,6 +15,8 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
 
     private TranslationManager translationManager;
     private CustomConfig configuration;
+
+    private ConnectState connectState;
 
     public final void load() {
         this.translationManager = new TranslationManager(this);
@@ -25,6 +30,7 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
         plugin = this;
 
         this.configuration = new CustomConfig(this, resolveConfig());
+        this.connectState = ConnectState.OPEN;
 
         //ロード
         load();
@@ -35,32 +41,10 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
         );
 
         //コマンドを登録
-        registerCommands();
-
-        /*Bukkit.getPluginManager().registerEvents(new Listeners(), this);
-        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeListeners());*/
-
-        /*getCommand("servergate").setExecutor(new Main());
-        getCommand("nick").setExecutor(new Nick());*/
-
-        /*CustomConfig.create("config");
-
-
-        if (CustomConfig.data.getBoolean("Nickname"))
-        {
-            Nick.nick = true;
-            CustomConfig.data.set("Nickname", true);
-        }
-        else
-        {
-            Nick.nick = false;
-            CustomConfig.data.set("Nickname", false);
-        }
-        CustomConfig.dataFile = new File(plugin.getDataFolder(), "config.yml");
-        try { CustomConfig.data.save(CustomConfig.dataFile); }
-        catch (IOException e) { e.printStackTrace(); }*/
-
+        registerCommands(
+                new Main(this),
+                new ServerGate(this)
+        );
 
     }
 
@@ -71,14 +55,8 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
 
         //設定ファイルをセーブ
         this.configuration.save();
-        /*CustomConfig.dataFile = new File(plugin.getDataFolder(), "config.yml");
-        CustomConfig.data.set("Nickname", Nick.nick);
-        try { CustomConfig.data.save(CustomConfig.dataFile); }
-        catch (IOException e) { e.printStackTrace(); }*/
 
     }
-
-
 
     public static ServerGatePlugins getPlugin()
     {
@@ -93,7 +71,15 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
         return getDataFolder().toPath().toAbsolutePath();
     }
 
+    public ConnectState getConnectState() {
+        return connectState;
+    }
+
     public TranslationManager getTranslationManager() {
         return this.translationManager;
+    }
+
+    public void setConnectState(ConnectState connectState) {
+        this.connectState = connectState;
     }
 }
