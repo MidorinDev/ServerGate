@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import plugin.midorin.info.sg.ServerGate;
+import plugin.midorin.info.sg.ServerGatePlugins;
 import plugin.midorin.info.sg.util.CustomConfig;
 import plugin.midorin.info.sg.util.Messages;
 
@@ -29,7 +29,7 @@ public class Nick implements CommandExecutor
                     if (!nick)
                     {
                         nick = true;
-                        CustomConfig.dataFile = new File(ServerGate.plugin.getDataFolder(), "config.yml");
+                        CustomConfig.dataFile = new File(ServerGatePlugins.plugin.getDataFolder(), "config.yml");
                         CustomConfig.data.set("Nickname", nick);
                         CustomConfig.data.save(CustomConfig.dataFile);
                         Bukkit.broadcastMessage(Messages.PREFIX + ChatColor.GREEN + "Nick機能が有効になりました。");
@@ -47,7 +47,7 @@ public class Nick implements CommandExecutor
                     if (nick)
                     {
                         nick = false;
-                        CustomConfig.dataFile = new File(ServerGate.plugin.getDataFolder(), "config.yml");
+                        CustomConfig.dataFile = new File(ServerGatePlugins.plugin.getDataFolder(), "config.yml");
                         CustomConfig.data.set("Nickname", nick);
                         CustomConfig.data.save(CustomConfig.dataFile);
                         Bukkit.broadcastMessage(Messages.PREFIX + ChatColor.YELLOW + "Nick機能が無効になりました。");

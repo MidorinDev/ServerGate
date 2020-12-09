@@ -24,6 +24,6 @@ public class BungeeListeners implements PluginMessageListener
         output.writeUTF("KickPlayer");
         output.writeUTF(player.getName());
         output.writeUTF(message);
-        player.sendPluginMessage(ServerGate.plugin, "BungeeCord", output.toByteArray());
+        player.sendPluginMessage(ServerGatePlugins.plugin, "BungeeCord", output.toByteArray());
     }
 }

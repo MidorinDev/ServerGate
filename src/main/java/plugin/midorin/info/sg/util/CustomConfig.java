@@ -1,21 +1,105 @@
 package plugin.midorin.info.sg.util;
 
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import plugin.midorin.info.sg.ServerGate;
-
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
 
-public class CustomConfig
-{
-    public static File dataFile;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class CustomConfig extends YamlConfiguration {
+
+    public final JavaPlugin plugin;
+    public final File file;
+    public final String name;
+    public final String resourceFileName;
+
+    public CustomConfig(JavaPlugin plugin, String fileName){
+        this(plugin, new File(plugin.getDataFolder(), fileName));
+    }
+
+    public CustomConfig(JavaPlugin plugin, File file){
+        this(plugin, file, file.getName());
+    }
+
+    public CustomConfig(JavaPlugin plugin, File file, String resourceFileName){
+        this.plugin = plugin;
+        this.file = file;
+        this.resourceFileName = resourceFileName.replace('\\', '/');
+
+        String fileName = file.getName();
+        name = fileName.substring(0, fileName.length() - 4);
+
+        saveResource(resourceFileName);
+
+        reload();
+    }
+
+    public void save(){
+        try {
+            save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void reload(){
+        super.map.clear();
+
+        try {
+            load(file);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        InputStream input = plugin.getResource(resourceFileName);
+        if(input != null)
+            setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(input, StandardCharsets.UTF_8)));
+    }
+
+    public void update(){
+        save();
+        reload();
+    }
+
+    private void saveResource(String resourceFileName){
+        if(file.exists()) return;
+
+        InputStream in = plugin.getResource(resourceFileName);
+        if(in == null)
+            throw new IllegalArgumentException("The embedded resource '" + resourceFileName + "' cannot be found in " + file);
+
+        String path = file.getPath();
+        int lastIndex = path.lastIndexOf(47);
+        File outDir = new File(file.getParent(), path.substring(0, (lastIndex >= 0) ? lastIndex : 0));
+
+        if (outDir.exists()) outDir.mkdirs();
+
+        OutputStream output = null;
+
+        try{
+            output = new FileOutputStream(file);
+            byte[] buf = new byte[1024];
+            int length = 0;
+            while ((length = in.read(buf)) > 0) output.write(buf, 0, length);
+            output.close();
+            in.close();
+        }catch(IOException ex){
+            plugin.getLogger().log(Level.SEVERE, "Cound not save " + file.getName() + " to " + file, ex);
+        }
+    }
+
+    /*public static File dataFile;
     public static FileConfiguration data;
     public static void create(String file_name)
     {
-        dataFile = new File(ServerGate.plugin.getDataFolder(), file_name + ".yml");
+        dataFile = new File(ServerGatePlugins.plugin.getDataFolder(), file_name + ".yml");
         data = new YamlConfiguration();
         try
         {
@@ -32,7 +116,7 @@ public class CustomConfig
     }
     public static void delete(String file_name)
     {
-        dataFile = new File(ServerGate.plugin.getDataFolder(), file_name + ".yml");
+        dataFile = new File(ServerGatePlugins.plugin.getDataFolder(), file_name + ".yml");
         data = new YamlConfiguration();
         if (dataFile.exists())
         {
@@ -42,11 +126,11 @@ public class CustomConfig
     }
     public static void reload()
     {
-        ServerGate.plugin.reloadConfig();
+        ServerGatePlugins.plugin.reloadConfig();
         System.out.println(Messages.PREFIX + ChatColor.GREEN + "File reload completed.");
     }
     public static FileConfiguration getConfig()
     {
         return data;
-    }
+    }*/
 }
