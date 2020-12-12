@@ -1,6 +1,6 @@
 name: ServerGate
 version: ${project.version}
-main: plugin.midorin.info.sg.ServerGate
+main: plugin.midorin.info.sg.ServerGatePlugins
 
 commands:
   servergate:

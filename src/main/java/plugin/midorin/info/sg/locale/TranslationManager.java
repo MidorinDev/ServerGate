@@ -63,7 +63,7 @@ public class TranslationManager {
         }
 
         // create a translation registry
-        this.registry = TranslationRegistry.create(Key.key("ServerGate", "main"));
+        this.registry = TranslationRegistry.create(Key.key("servergate", "main"));
         this.registry.defaultLocale(DEFAULT_LOCALE);
 
         // load custom translations first, then the base (built-in) translations after.
@@ -78,7 +78,7 @@ public class TranslationManager {
      * jar ファイルからベースの (日本語) 翻訳を読み込みます。
      */
     private void loadBase() {
-        ResourceBundle bundle = ResourceBundle.getBundle("ServerGate", DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
+        ResourceBundle bundle = ResourceBundle.getBundle("servergate", DEFAULT_LOCALE, UTF8ResourceBundleControl.get());
         try {
             this.registry.registerAll(DEFAULT_LOCALE, bundle, false);
         } catch (IllegalArgumentException e) {

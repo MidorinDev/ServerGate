@@ -1,20 +1,7 @@
 package plugin.midorin.info.sg.commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
-import plugin.midorin.info.sg.ServerGatePlugins;
-import plugin.midorin.info.sg.util.CustomConfig;
-import plugin.midorin.info.sg.util.Messages;
-
-import java.io.File;
-
-public class Nick implements CommandExecutor
-{
+public class Nick
+{/*
     public static boolean nick = true;
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
@@ -93,6 +80,7 @@ public class Nick implements CommandExecutor
         msg = ChatColor.translateAlternateColorCodes('&', msg);
         player.setPlayerListName(msg);
         player.setDisplayName(msg);
-        sender.sendMessage(Messages.PREFIX + ChatColor.YELLOW + "あなたのニックネームが " + ChatColor.RESET + msg + ChatColor.YELLOW + " に変更されました。");
+        ///sender.sendMessage(Messages.PREFIX + ChatColor.YELLOW + "あなたのニックネームが " + ChatColor.RESET + msg + ChatColor.YELLOW + " に変更されました。");
     }
+    */
 }

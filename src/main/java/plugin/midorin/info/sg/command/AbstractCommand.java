@@ -87,7 +87,7 @@ public abstract class AbstractCommand<P extends JavaPlugin> implements TabComple
         final PluginCommand pluginCommand = plugin.getCommand(name);
 
         if (pluginCommand == null) {
-            throw new IllegalArgumentException("Command is not registered in plugin.yml");
+            throw new IllegalArgumentException("plugin.ymlにコマンドが登録されていない");
         }
 
         return pluginCommand;
@@ -191,10 +191,10 @@ public abstract class AbstractCommand<P extends JavaPlugin> implements TabComple
 
     protected enum MessageType {
 
-        PLAYER_ONLY("&cThis command can only be executed by a player!"),
-        NO_PERMISSION("&cYou need the following permission: {0}"),
-        SUB_COMMAND_INVALID("&c''{1}'' is not a valid sub command. Type /{0} for help."),
-        SUB_COMMAND_USAGE("&cUsage: /{0} {1} - {2}");
+        PLAYER_ONLY("&cこのコマンドはプレイヤーのみが実行可能です"),
+        NO_PERMISSION("&c以下の許可が必要です。: {0}"),
+        SUB_COMMAND_INVALID("&c''{1}'' は有効なサブコマンドではありません。ヘルプには/{0}と入力してください。"),
+        SUB_COMMAND_USAGE("&c使用法: /{0} {1} - {2}");
 
         private final MessageFormat defaultMessage;
 

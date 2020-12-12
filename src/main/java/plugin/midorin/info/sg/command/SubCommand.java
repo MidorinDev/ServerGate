@@ -14,15 +14,15 @@ public abstract class SubCommand {
     private final String[] aliases;
 
     /**
-     * The constructor for a subcommand.
+     * サブコマンドのコンストラクタ
      *
-     * @param name Name of this subcommand. Should not be null!
-     * @param usage Usage of this subcommand. May be null.
-     * @param description Description of this subcommand. May be null.
-     * @param permission Permission of this subcommand. May be null.
-     * @param playerOnly Whether or not this subcommand should be player only.
-     * @param length Length of this subcommand. Must be greater than or equal to 1.
-     * @param aliases Aliases of this subcommand.
+     * @param name このサブコマンドの名前。nullにしてはいけません!!
+     * @param usage このサブコマンドの使用法。nullも可。
+     * @param description このサブコマンドの説明。nullも可。
+     * @param permission このサブコマンドの許可。nullも可。
+     * @param playerOnly このサブコマンドをプレイヤーのみにするかどうか。
+     * @param length このサブコマンドの長さ。1以上でなければなりません。
+     * @param aliases このサブコマンドのエイリアス。
      */
     public SubCommand(@NonNull final String name, @Nullable final String usage, @Nullable final String description, @Nullable final String permission,
                       final boolean playerOnly, final int length, final String... aliases) {
@@ -36,65 +36,30 @@ public abstract class SubCommand {
         this.aliases = aliases;
     }
 
-    /**
-     * The name of this subcommand.
-     *
-     * @return Never-null {@link String} that is the name of this subcommand.
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * The usage of this subcommand.
-     *
-     * @return Usage of this subcommand or null if unspecified.
-     */
     public String getUsage() {
         return usage;
     }
 
-    /**
-     * The description of this subcommand.
-     *
-     * @return Description of this subcommand or null if unspecified.
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * The permission of this subcommand. If set to null, it will inherit its parent's permission.
-     *
-     * @return Permission of this subcommand or null if unspecified.
-     */
     public String getPermission() {
         return permission;
     }
 
-    /**
-     * Whether or not this subcommand can only be used by a player. If the parent of this subcommand is player only, this value will not be considered.
-     *
-     * @return True if this subcommand is player only. False otherwise.
-     */
     public boolean isPlayerOnly() {
         return playerOnly;
     }
 
-    /**
-     * The length of this subcommand.
-     *
-     * @return Length of this subcommand.
-     */
     public int getLength() {
         return length;
     }
 
-    /**
-     * The aliases of this subcommand.
-     *
-     * @return Aliases of this subcommand.
-     */
     public String[] getAliases() {
         return aliases;
     }

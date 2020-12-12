@@ -1,6 +1,5 @@
 package plugin.midorin.info.sg;
 
-import plugin.midorin.info.sg.commands.Main;
 import plugin.midorin.info.sg.commands.ServerGate;
 import plugin.midorin.info.sg.listeners.ConnectionListener;
 import plugin.midorin.info.sg.locale.TranslationManager;
@@ -30,7 +29,7 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
         plugin = this;
 
         this.configuration = new CustomConfig(this, resolveConfig());
-        this.connectState = ConnectState.OPEN;
+        this.connectState = ConnectState.valueOf(getConfiguration().getString("connectState").toUpperCase()) == null ? ConnectState.valueOf(getConfiguration().getString("connectState").toUpperCase()) :  ConnectState.OPEN;
 
         //ロード
         load();
@@ -42,7 +41,6 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
 
         //コマンドを登録
         registerCommands(
-                new Main(this),
                 new ServerGate(this)
         );
 
@@ -54,6 +52,7 @@ public class ServerGatePlugins extends AbstractServerGatePlugin {
         super.onDisable();
 
         //設定ファイルをセーブ
+        this.configuration.set("connectState",this.connectState.name().toUpperCase());
         this.configuration.save();
 
     }

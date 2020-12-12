@@ -17,17 +17,11 @@ public abstract class BaseCommand extends AbstractCommand {
         this.plugin = plugin;
     }
 
-    /**
-     * Constructor for a sub command, inherits parent permission
-     */
     protected BaseCommand(final ServerGatePlugins plugin, final String name, final String usage, final String description, final int length, final boolean playerOnly,
                           final String... aliases) {
         this(plugin, name, usage, description, null, length, playerOnly, aliases);
     }
 
-    /**
-     * Constructor for a parent command
-     */
     protected BaseCommand(final ServerGatePlugins plugin, final String name, final String permission, final boolean playerOnly) {
         this(plugin, name, null, null, permission, -1, playerOnly);
     }

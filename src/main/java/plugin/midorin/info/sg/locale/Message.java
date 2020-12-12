@@ -37,49 +37,32 @@ public interface Message {
                 .build();
     }
 
-
-
-    Args0 REGISTER_CHEST = () -> prefixed(translatable()
-            .key("ServerGate.register.chest")
-            .color(YELLOW)
-            .append(FULL_STOP)
-    );
-
-    Args0 ALREADY_PROTECTED = () -> prefixed(translatable()
-            .key("ServerGate.already.protected")
+    Args0 CLOSED_SERVER_KICK_MESSAGE = () -> prefixed(translatable()
+        // "サーバーは閉鎖されています"
+            .key("servergate.kick.closed.server")
             .color(RED)
             .append(FULL_STOP)
     );
 
-    Args0 UNREGISTER_PROTECT = () -> prefixed(translatable()
-            .key("ServerGate.unregister")
-            .color(RED)
+    Args0 PRIVATE_SERVER_KICK_MESSAGE =  () -> prefixed(translatable()
+            // "サーバーは現在特定プライヤーのみ参加可能です
+            .key("servergate.kick.private.server")
+            .color(AQUA)
             .append(FULL_STOP)
     );
 
-    Args0 CANNOT_DESTROYED = () -> prefixed(translatable()
-            .key("ServerGate.cannot.destroyed")
-            .color(RED)
-            .append(FULL_STOP)
-    );
-
-    Args0 NOT_OWNER_CHEST = () -> prefixed(translatable()
-            .key("ServerGate.not.owner.chest")
-            .color(RED)
-            .append(FULL_STOP)
-    );
 
     Args1<String> VIEW_AVAILABLE_COMMANDS_PROMPT = label -> prefixed(translatable()
-            // "&3Use &a/{} help &3to view available commands."
-            .key("ServerGate.commandsystem.available-commands")
+            // "&3使用可能なコマンドを表示するには、&a/{}ヘルプ&3を使用します。"
+            .key("servergate.commandsystem.available-commands")
             .color(DARK_AQUA)
             .args(text('/' + label + " help", GREEN))
             .append(FULL_STOP)
     );
 
     Args0 NO_PERMISSION_FOR_SUBCOMMANDS = () -> prefixed(translatable()
-            // "&3You do not have permission to use any sub commands."
-            .key("ServerGate.commandsystem.no-permission-subcommands")
+            // "&3サブコマンドの使用する権限がありません。"
+            .key("servergate.commandsystem.no-permission-subcommands")
             .color(DARK_AQUA)
             .append(FULL_STOP)
     );
@@ -89,7 +72,7 @@ public interface Message {
             .color(AQUA)
             .append(text(name))
             .append(space())
-            .append(translatable("ServerGate.commandsystem.usage.sub-commands-header"))
+            .append(translatable("servergate.commandsystem.usage.sub-commands-header"))
             .append(text(": "))
             .append(text()
                     .color(GRAY)
@@ -101,8 +84,8 @@ public interface Message {
 
 
     Args0 COMMAND_NO_PERMISSION = () -> prefixed(translatable()
-            // "&cYou do not have permission to use this command!"
-            .key("ServerGate.commandsystem.no-permission")
+            // "&cこのコマンドを使用する権限がありません!"
+            .key("servergate.commandsystem.no-permission")
             .color(RED)
     );
 

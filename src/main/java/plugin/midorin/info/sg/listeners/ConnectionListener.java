@@ -23,15 +23,28 @@ public class ConnectionListener implements Listener  {
         final Player player =  e.getPlayer();
         final ConnectState connectState = ServerGatePlugins.getPlugin().getConnectState();
 
-        //closeならkickして何かしらのキックメッセージ
-        if(ConnectState.CLOSE == connectState)  {
+        if(player.isOp() || player.hasPermission("test?") /*|| isRegisterd(player)*/) return;
 
-            //op持ちか権限持ちならバイパス(return)
-            if(player.isOp() || player.hasPermission("test?")) return;
+        Component reason = connectState == ConnectState.CLOSE ? TranslationManager.render(Message.CLOSED_SERVER_KICK_MESSAGE.build(), player.getLocale()) : TranslationManager.render(Message.PRIVATE_SERVER_KICK_MESSAGE.build(), player.getLocale());
 
-            Component reason = TranslationManager.render(Message.CLOSED_SERVER.build(), player.getLocale());
-            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, LegacyComponentSerializer.legacySection().serialize(reason));
-            return;
+        switch (connectState) {
+
+            case CLOSE:
+                //op持ちか権限持ちならバイパス(return)
+                if(player.isOp() || player.hasPermission("test?")) return;
+
+                e.disallow(PlayerLoginEvent.Result.KICK_OTHER, LegacyComponentSerializer.legacySection().serialize(reason));
+                break;
+            case PRIVATE:
+
+                //登録されているか
+                if(player.isOp()) return;
+
+                e.disallow(PlayerLoginEvent.Result.KICK_OTHER, LegacyComponentSerializer.legacySection().serialize(reason));
+                break;
+
+            default:
+                break;
         }
     }
 }

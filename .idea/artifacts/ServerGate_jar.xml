@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ServerGate:jar">
+    <output-path>D:/servers/parkour 1.12.2/plugins</output-path>
+    <root id="archive" name="ServerGate.jar">
+      <element id="module-output" name="ServerGate" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/checkerframework/checker-qual/3.8.0/checker-qual-3.8.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-text-serializer-bungeecord/4.0.0-SNAPSHOT/adventure-text-serializer-bungeecord-4.0.0-20201205.231454-48.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/examination-api/1.0.0/examination-api-1.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-text-serializer-gson/4.3.0/adventure-text-serializer-gson-4.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-text-serializer-gson-legacy-impl/4.3.0/adventure-text-serializer-gson-legacy-impl-4.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-platform-facet/4.0.0-SNAPSHOT/adventure-platform-facet-4.0.0-20201205.231454-17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-platform-bukkit/4.0.0-SNAPSHOT/adventure-platform-bukkit-4.0.0-20201205.231454-56.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-text-serializer-craftbukkit/4.0.0-SNAPSHOT/adventure-text-serializer-craftbukkit-4.0.0-20201205.231454-17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-text-serializer-legacy/4.3.0/adventure-text-serializer-legacy-4.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-nbt/4.3.0/adventure-nbt-4.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/3.4.5/HikariCP-3.4.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-platform-api/4.0.0-SNAPSHOT/adventure-platform-api-4.0.0-20201205.231454-37.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/examination-string/1.0.0/examination-string-1.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-api/4.3.0/adventure-api-4.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/kyori/adventure-platform-viaversion/4.0.0-SNAPSHOT/adventure-platform-viaversion-4.0.0-20201205.231454-40.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/servergate_ja_JP.properties" />
+    </root>
+  </artifact>
+</component>
