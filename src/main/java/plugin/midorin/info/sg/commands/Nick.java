@@ -1,20 +1,7 @@
 package plugin.midorin.info.sg.commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
-import plugin.midorin.info.sg.ServerGate;
-import plugin.midorin.info.sg.util.CustomConfig;
-import plugin.midorin.info.sg.util.Messages;
-
-import java.io.File;
-
-public class Nick implements CommandExecutor
-{
+public class Nick
+{/*
     public static boolean nick = true;
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
@@ -29,7 +16,7 @@ public class Nick implements CommandExecutor
                     if (!nick)
                     {
                         nick = true;
-                        CustomConfig.dataFile = new File(ServerGate.plugin.getDataFolder(), "config.yml");
+                        CustomConfig.dataFile = new File(ServerGatePlugins.plugin.getDataFolder(), "config.yml");
                         CustomConfig.data.set("Nickname", nick);
                         CustomConfig.data.save(CustomConfig.dataFile);
                         Bukkit.broadcastMessage(Messages.PREFIX + ChatColor.GREEN + "Nick機能が有効になりました。");
@@ -47,7 +34,7 @@ public class Nick implements CommandExecutor
                     if (nick)
                     {
                         nick = false;
-                        CustomConfig.dataFile = new File(ServerGate.plugin.getDataFolder(), "config.yml");
+                        CustomConfig.dataFile = new File(ServerGatePlugins.plugin.getDataFolder(), "config.yml");
                         CustomConfig.data.set("Nickname", nick);
                         CustomConfig.data.save(CustomConfig.dataFile);
                         Bukkit.broadcastMessage(Messages.PREFIX + ChatColor.YELLOW + "Nick機能が無効になりました。");
@@ -93,6 +80,7 @@ public class Nick implements CommandExecutor
         msg = ChatColor.translateAlternateColorCodes('&', msg);
         player.setPlayerListName(msg);
         player.setDisplayName(msg);
-        sender.sendMessage(Messages.PREFIX + ChatColor.YELLOW + "あなたのニックネームが " + ChatColor.RESET + msg + ChatColor.YELLOW + " に変更されました。");
+        ///sender.sendMessage(Messages.PREFIX + ChatColor.YELLOW + "あなたのニックネームが " + ChatColor.RESET + msg + ChatColor.YELLOW + " に変更されました。");
     }
+    */
 }
